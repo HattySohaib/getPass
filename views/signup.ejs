@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetPass-SignUp</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="flex-column default-font signup-container">
+      <p class="heading">Create an account</p>
+      <p id="tagline">Let us know about you!</p>
+      <form
+        action="/users/signup"
+        method="POST"
+        class="flex-column"
+        id="signup-form"
+      >
+        <input id="name" type="text" name="fullname" placeholder="Fullname" />
+        <input
+          type="text"
+          name="room"
+          id="npass"
+          placeholder="Current Room No: "
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      <lgin>
+        <p>Already have an account?</p>
+        <a href="/login">Log In</a>
+      </lgin>
+      <gauth>
+        <a href="/auth/google">Sign Up with Google</a>
+      </gauth>
+    </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

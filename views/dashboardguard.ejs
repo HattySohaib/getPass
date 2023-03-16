@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetPass-Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/dashboard.js"></script>
+  </head>
+
+  <body>
+    <%- include('./partials/header.ejs') %> <%- include('./partials/logout.ejs')
+    %>
+    <div class="flex-column default-font">
+      <br /><br /><br />
+      <div class="round1 flex-column">
+        <img src="<%=image%>" alt="Profile picture" id="person-icon" />
+      </div>
+      <br />
+      <form action="/log/gatelog" method="post">
+        <p class="profile-key">Enter an OTP:</p>
+        <input
+          id="enterOtp"
+          type="number"
+          name="enterOtp"
+          placeholder="Enter verification code"
+        />
+        <button id="submit-otp" type="submit">Submit</button>
+      </form>
+      <br /><br />
+      <hr width="60%" />
+      <div class="statistics">
+        <p id="stat">Student status:</p>
+        <p class="profile-key">Are Out:</p>
+        <p class="profile-value"><%= outCount %></p>
+        <p class="profile-key">Have Returned:</p>
+        <p class="profile-value"><%= retCount %></p>
+        <p class="profile-key">Went Out:</p>
+        <p class="profile-value"><%= Total %></p>
+      </div>
+    </div>
+  </body>
+</html>

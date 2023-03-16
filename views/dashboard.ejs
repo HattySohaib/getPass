@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetPass-Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/dashboard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <button id="kebab">
+      <img id="kebab-icon" src="/kebab.svg" alt="menu" onclick="showAll()" />
+    </button>
+    <form action="/user/profile" method="post">
+      <input type="text" name="uid" id="hidden" value="<%=roll%>" />
+      <div id="options">
+        <a
+          class="profile-key"
+          onclick="alert('You have been logged out!')"
+          href="/auth/logout"
+          >Log Out</a
+        >
+        <button
+          class="profile-key"
+          style="border: none; background-color: rgba(240, 248, 255, 0)"
+          type="submit"
+        >
+          Profile
+        </button>
+      </div>
+    </form>
+    <div id="closer"></div>
+
+    <div class="flex-column default-font dashboard-container">
+      <br /><br /><br />
+      <div class="round1 flex-column status-<%= status %>">
+        <img src="<%=image%>" alt="Profile picture" id="person-icon" />
+      </div>
+      <br />
+
+      <div class="flex-column profile-container">
+        <p class="profile-key">Name:</p>
+        <p class="profile-value"><%=name%></p>
+        <p class="profile-key">Roll No:</p>
+        <p class="profile-value" id="roll"><%=roll%></p>
+        <p class="profile-key">Hostel:</p>
+        <p class="profile-value" id="roll"><%=hostel%></p>
+
+        <br /><br />
+        <p class="profile-key" style="align-self: center">
+          Get your OTP below:
+        </p>
+        <hr width="80%" />
+        <div id="otp" class="flex-column default-font"><%= outOTP %></div>
+        <div class="otp-form">
+          <% if(status==1 || status==0){ %>
+          <form action="/log/inNow" method="POST">
+            <input type="text" name="uid" id="hidden" value="<%=roll%>" />
+            <button id="get-otp" class="flex-column qr-btn2" type="submit">
+              <div>
+                <img src="/reload.png" alt="Generate" />
+              </div>
+              <p id="qr-text">Get In</p>
+            </button>
+          </form>
+          <% }else if(status==2){ %>
+          <form action="/user/success" method="POST">
+            <input type="text" name="uid" id="hidden" value="<%=roll%>" />
+            <button id="done" class="flex-column qr-btn2" type="submit">
+              <div>
+                <img src="/tick.png" alt="Log Complete" />
+              </div>
+              <p id="qr-text">OTP Submitted</p>
+            </button>
+          </form>
+          <% }else{ %>
+          <form action="/log/outNow" method="POST">
+            <input type="text" name="uid" id="hidden" value="<%=roll%>" />
+            <div></div>
+            <div onclick="openForm()" id="go-out" class="qr-btn">
+              <div>
+                <div>
+                  <p>GO OUT</p>
+                </div>
+              </div>
+            </div>
+            <div id="trans" class="trans flex-column">
+              <div class="reason flex-column">
+                <div style="width: 80%">
+                  <p class="profile-value">Reason</p>
+                  <!-- <p class="profile-key">Please enter a valid reason to go out.</p> -->
+                  <textarea
+                    name="reason"
+                    id="reason"
+                    maxlength="{150}"
+                    autofocus
+                    rows="{4}"
+                    placeholder="Why are you going out today?"
+                    contenteditable="true"
+                  ></textarea>
+                  <div class="btn-cnt">
+                    <div id="back" onclick="closeForm()">back</div>
+                    <button id="next" type="submit">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

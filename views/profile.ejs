@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetPass-Profile</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <%- include("partials/header.ejs") %>
+      <div class="flex-column default-font">
+        <h1 class="heading">Fill Your Profile Details</h1>
+        <p class="tagline"></p>
+        <form class="flex-column" action="/user/fill" method="post">
+          <input
+            type="text"
+            name="roll"
+            style="display: none"
+            value="<%-roll%>"
+          />
+          <div>
+            <p class="profile-key">Phone Number:</p>
+            <input
+              required="true"
+              id="phone"
+              type="number"
+              name="phone"
+              placeholder="00000 XXXXX"
+            />
+          </div>
+          <div>
+            <p class="profile-key">Hostel Room No:</p>
+            <input
+              required="true"
+              id="room"
+              type="number"
+              name="room"
+              placeholder="00X"
+            />
+          </div>
+          <div>
+            <p class="profile-key">Hostel:</p>
+            <select id="hostel" name="hostel">
+              <option disabled selected value="Select">Select</option>
+              <option value="SRKH">Sarvepalli Radhakrishnan Hostel</option>
+              <option value="KH">Kalam Hostel</option>
+              <option value="KCH">Kalpana Chawla Hostel</option>
+            </select>
+          </div>
+          <button type="submit" id="signup-btn">Sign Up</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
