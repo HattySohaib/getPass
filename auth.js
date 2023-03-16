@@ -4,8 +4,8 @@ const mongo = require("./mongo.js");
 //
 
 const GOOGLE_CLIENT_ID =
-  "495428299858-ms0cr2cmi312f41bck8cmgvcrgtsm2nv.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+  "*******$$$$$$$$";
+const GOOGLE_CLIENT_SECRET = "********Will reupload#######";
 
 passport.use(
   new GoogleStrategy(
